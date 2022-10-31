@@ -23,32 +23,45 @@ function mouseClicked() {
   // CIRCLE 0
   if (mouseX > 325 && mouseX < 375 && mouseY < 80 && mouseY > 50) {
     if (!game.spider0.visible) {
-      if (!game.spider3.visible) {
+      if (!game.spider3.visible && !game.spider5.visible) {
         game.spider3.visible = true;
-      } else {
+
+        visibleSpiders++;
+      } else if (game.spider3.visible && !game.spider5.visible) {
         game.spider5.visible = true;
+        visibleSpiders++;
+      } else if (!game.spider3.visible && game.spider5.visible) {
+        game.spider3.visible = true;
+        visibleSpiders++;
+      } else if (game.spider3.visible && game.spider5.visible) {
+        visibleSpiders = visibleSpiders;
       }
       game.setVisibleSpider(0);
-      // Plus one more visible spider
-      visibleSpiders++;
     }
 
     console.log(visibleSpiders);
-    // check if 78 spiders
+    // check if 7 spiders
     if (visibleSpiders === 7) {
       console.log('You won!');
     }
+
     // CIRCLE 1
   } else if (mouseX > 530 && mouseX < 560 && mouseY < 170 && mouseY > 130) {
     if (!game.spider1.visible) {
-      if (!game.spider4.visible) {
+      if (!game.spider4.visible && !game.spider6.visible) {
         game.spider4.visible = true;
-      } else {
+
+        visibleSpiders++;
+      } else if (game.spider4.visible && !game.spider6.visible) {
         game.spider6.visible = true;
+        visibleSpiders++;
+      } else if (!game.spider4.visible && game.spider6.visible) {
+        game.spider4.visible = true;
+        visibleSpiders++;
+      } else if (game.spider4.visible && game.spider6.visible) {
+        visibleSpiders = visibleSpiders;
       }
       game.setVisibleSpider(1);
-      // Plus one more visible spider
-      visibleSpiders++;
     }
 
     console.log(visibleSpiders);
@@ -60,14 +73,17 @@ function mouseClicked() {
     // CIRCLE 2
   } else if (mouseX > 605 && mouseX < 655 && mouseY < 375 && mouseY > 325) {
     if (!game.spider2.visible) {
-      if (!game.spider5.visible) {
+      if (!game.spider5.visible && !game.spider7.visible) {
         game.spider5.visible = true;
-      } else {
+
+        visibleSpiders++;
+      } else if (game.spider5.visible && !game.spider7.visible) {
         game.spider7.visible = true;
+        visibleSpiders++;
+      } else if (game.spider7.visible && game.spider5.visible) {
+        visibleSpiders = visibleSpiders;
       }
       game.setVisibleSpider(2);
-      // Plus one more visible spider
-      visibleSpiders++;
     }
 
     console.log(visibleSpiders);
@@ -75,18 +91,23 @@ function mouseClicked() {
     if (visibleSpiders === 7) {
       console.log('You won!');
     }
+    // ============================ 31.10.
 
     // CIRCLE 3
   } else if (mouseX > 520 && mouseX < 565 && mouseY < 575 && mouseY > 525) {
     if (!game.spider3.visible) {
-      if (!game.spider6.visible) {
+      if (!game.spider6.visible && !game.spider1.visible) {
         game.spider6.visible = true;
-      } else {
+        game.setVisibleSpider(3);
+        // Plus one more visible spider
+        visibleSpiders++;
+      } else if (game.spider6.visible && !game.spider0.visible) {
         game.spider0.visible = true;
+        // Plus one more visible spider
+        visibleSpiders++;
+      } else if (game.spider6.visible && game.spider1.visible) {
+        visibleSpiders = visibleSpiders;
       }
-      game.setVisibleSpider(3);
-      // Plus one more visible spider
-      visibleSpiders++;
     }
 
     console.log(visibleSpiders);
@@ -159,7 +180,7 @@ function mouseClicked() {
       if (!game.spider2.visible) {
         game.spider2.visible = true;
       } else {
-        game.spider5.visible = true;
+        game.spider4.visible = true;
       }
 
       game.setVisibleSpider(7);

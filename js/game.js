@@ -94,17 +94,6 @@ class Game {
     line(606, 350, 165, 530);
   }
 
-  // setInvisibleSpiders() {
-  //   this.spider0.setInvisibleSpider();
-  //   this.spider1.setInvisibleSpider();
-  //   this.spider2.setInvisibleSpider();
-  //   this.spider3.setInvisibleSpider();
-  //   this.spider4.setInvisibleSpider();
-  //   this.spider5.setInvisibleSpider();
-  //   this.spider6.setInvisibleSpider();
-  //   this.spider7.setInvisibleSpider();
-  // }
-
   setVisibleSpider(index) {
     // let randInd = Math.floor(Math.random() * 2);
     switch (index) {
