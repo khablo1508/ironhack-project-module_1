@@ -52,7 +52,7 @@ body {
     var(--bg-blue-1),
     var(--bg-blue-5)
   );
-  /* cursor: url('./assets/cursor-spider-small.png'), auto; */
+  cursor: url('./assets/cursor-spider-small.png'), auto;
 }
 
 /* 
@@ -64,8 +64,8 @@ Popup
   z-index: 2;
 }
 .popup {
-  display: none;
-  /* display: flex; */
+  /* display: none; */
+  display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
@@ -83,18 +83,18 @@ Popup
 }
 
 /* Upper container */
-.popup-upper-container {
+.popup-container {
   margin: 0.8rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.popup-upper-container h1 {
+.popup-container h1 {
   font-size: 4.5rem;
   letter-spacing: 0.3rem;
 }
-.popup-upper-container p {
+.popup-container p {
   font-size: 2.5rem;
   text-align: center;
 }
@@ -108,7 +108,7 @@ Popup
   font-family: 'Shadows Into Light';
   border: none;
   border-radius: 0.5rem;
-  /* cursor: url('./assets/cursor-spider-small.png'), auto; */
+  cursor: url('./assets/cursor-spider-small.png'), auto;
   transition: all 0.2s linear;
 }
 .popup button:hover {
@@ -121,42 +121,66 @@ Canvas
 ================
 */
 #canvas {
-  border: 2px solid red;
-  /* display: none; */
-  display: block;
+  display: none;
+  /* display: block; */
 }
 
-/* Lower container */
-/* .popup-lower-container {
-  width: 100%;
+/* 
+================
+Winner
+================
+*/
+/* .winner {
+  display: none;
   display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background: var(--clr-yellow);
+  width: 45rem;
+  height: 30rem;
+  max-width: 700px;
+  max-height: 500px;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: var(--clr-red) 15px solid;
+  border-radius: 3rem;
+}
+.winner-container {
+  margin: 0.8rem;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.popup-lower-container .popup-btn-container {
-  width: 30%;
-  height: 20%;
-  background: var(--bg-blue-1);
-  text-align: center;
-}
-.popup-lower-container .popup-btn-container {
-  width: 100%;
-  height: 100%;
-  background: var(--bg-blue-1);
-  text-align: center;
-  color: #fff;
+.winner-container h1 {
+  font-size: 4.5rem;
+  letter-spacing: 0.3rem;
 } */
-/* .popup-img-container {
-  width: 40%;
-  height: 60%;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  transform: translate(20%, 20%);
+/* .winner-container h2 {
+  font-size: 3rem;
+  letter-spacing: 0.3rem;
 }
-
-.popup-img-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+.winner-container p {
+  margin: 1rem;
+  font-size: 2rem;
+  text-align: center;
+} */
+/* 
+.winner button {
+  width: 22rem;
+  height: 5rem;
+  background: var(--bg-blue-1);
+  color: #fff;
+  font-size: 2rem;
+  font-family: 'Shadows Into Light';
+  border: none;
+  border-radius: 0.5rem;
+  cursor: url('./assets/cursor-spider-small.png'), auto;
+  transition: all 0.2s linear;
+}
+.winner button:hover {
+  background: var(--bg-blue-10);
 } */
