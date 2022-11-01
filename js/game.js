@@ -1,5 +1,6 @@
 class Game {
   constructor() {
+    // this.spiderSmall0 = new SpiderSmall(325, 45);
     this.spider0 = new Spider(275, -5);
     this.spider1 = new Spider(470, 75);
     this.spider2 = new Spider(555, 275);
@@ -8,8 +9,15 @@ class Game {
     this.spider5 = new Spider(80, 475);
     this.spider6 = new Spider(-5, 275);
     this.spider7 = new Spider(80, 75);
+    this.failureShortSound = new Audio('../assets/failure-short.mp3');
+    this.successShortSound = new Audio('../assets/ratchet-short.mp3');
+    this.wonSound = new Audio('../assets/won-long.mp3');
+    this.lostSound = new Audio('../assets/lost-long.mp3');
+    this.font;
   }
   preload() {
+    this.font = loadFont('../assets/ShadowsIntoLight.ttf');
+    // this.spiderSmall0.image = loadImage('../assets/spider-pos0.png');
     this.spider0.image = loadImage('../assets/spider-pos0.png');
     this.spider1.image = loadImage('../assets/spider-pos1.png');
     this.spider2.image = loadImage('../assets/spider-pos2.png');
@@ -18,6 +26,18 @@ class Game {
     this.spider5.image = loadImage('../assets/spider-pos5.png');
     this.spider6.image = loadImage('../assets/spider-pos6.png');
     this.spider7.image = loadImage('../assets/spider-pos7.png');
+  }
+
+  drawButton() {
+    // restart button
+    stroke('#fff4a3');
+    rect(580, 20, 100, 50, 20);
+
+    // text
+    fill('#174366');
+    text('Restart?', 605, 50);
+    textSize(16);
+    textFont('ShadowsIntoLight');
   }
 
   drawBigFieldCircle() {
@@ -94,8 +114,14 @@ class Game {
     line(606, 350, 165, 530);
   }
 
+  drawPopup() {
+    stroke('#ff1d00');
+    strokeWeight(10);
+    fill('#fff4a3');
+    circle(350, 350, 680);
+  }
+
   setVisibleSpider(index) {
-    // let randInd = Math.floor(Math.random() * 2);
     switch (index) {
       default:
         if (this.spider3.visible === true) {
@@ -147,6 +173,13 @@ class Game {
         }
     }
   }
+
+  // setVisibleSpiderSmall(index) {
+  //   switch (index) {
+  //     default:
+  //       this.spiderSmall0.setVisibleSpiderSmall();
+  //   }
+  // }
 }
 
 class Spider {
@@ -163,3 +196,27 @@ class Spider {
     }
   }
 }
+
+// class SpiderSmall {
+//   constructor(x, y) {
+//     this.image;
+//     this.x = x;
+//     this.y = y;
+//     this.visible = false;
+//   }
+
+//   setVisibleSpiderSmall() {
+//     if (this.visible) {
+//       image(this.image, this.x, this.y, 50, 50);
+
+//       while (this.x < 530 && this.y < 525) {
+//         this.x += 0.18;
+//         this.y += 0.45;
+//       }
+//       if (this.x === 530 && this.y === 525) {
+//         tint(255, 0);
+//         image(this.image, this.x, this.y, 50, 50);
+//       }
+//     }
+//   }
+// }
