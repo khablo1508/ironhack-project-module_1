@@ -1,13 +1,16 @@
 class Game {
   constructor() {
-    this.spider0 = new Spider(275, -5);
-    this.spider1 = new Spider(470, 75);
-    this.spider2 = new Spider(555, 275);
-    this.spider3 = new Spider(470, 475);
-    this.spider4 = new Spider(275, 555);
-    this.spider5 = new Spider(80, 475);
-    this.spider6 = new Spider(-5, 275);
-    this.spider7 = new Spider(80, 75);
+    this.spiders = [
+      new Spider(275, -5),
+      new Spider(470, 75),
+      new Spider(555, 275),
+      new Spider(470, 475),
+      new Spider(275, 555),
+      new Spider(80, 475),
+      new Spider(-5, 275),
+      new Spider(80, 75),
+    ];
+    this.visibleSpiders = 0;
     this.failureShortSound = new Audio('../assets/failure-short.mp3');
     this.successShortSound = new Audio('../assets/ratchet-short.mp3');
     this.wonSound = new Audio('../assets/won-long.mp3');
@@ -16,14 +19,14 @@ class Game {
   }
   preload() {
     this.font = loadFont('../assets/ShadowsIntoLight.ttf');
-    this.spider0.image = loadImage('../assets/spider-pos0.png');
-    this.spider1.image = loadImage('../assets/spider-pos1.png');
-    this.spider2.image = loadImage('../assets/spider-pos2.png');
-    this.spider3.image = loadImage('../assets/spider-pos3.png');
-    this.spider4.image = loadImage('../assets/spider-pos4.png');
-    this.spider5.image = loadImage('../assets/spider-pos5.png');
-    this.spider6.image = loadImage('../assets/6output-onlinepngtools.png');
-    this.spider7.image = loadImage('../assets/7output-onlinepngtools.png');
+    this.spiders[0].image = loadImage('../assets/spider-pos0.png');
+    this.spiders[1].image = loadImage('../assets/spider-pos1.png');
+    this.spiders[2].image = loadImage('../assets/spider-pos2.png');
+    this.spiders[3].image = loadImage('../assets/spider-pos3.png');
+    this.spiders[4].image = loadImage('../assets/spider-pos4.png');
+    this.spiders[5].image = loadImage('../assets/spider-pos5.png');
+    this.spiders[6].image = loadImage('../assets/spider-pos6.png');
+    this.spiders[7].image = loadImage('../assets/spider-pos7.png');
   }
 
   drawButton() {
@@ -119,56 +122,254 @@ class Game {
   //   circle(350, 350, 680);
   // }
 
-  setVisibleSpider(index) {
-    switch (index) {
-      default:
-        if (this.spider3.visible === true) {
-          this.spider3.setVisibleSpider();
-        } else {
-          this.spider5.setVisibleSpider();
+  checkClick() {
+    if (mouseX > 300 && mouseX < 400 && mouseY < 110 && mouseY > 20) {
+      if (!this.spiders[0].visible) {
+        if (!this.spiders[3].visible && !this.spiders[5].visible) {
+          this.spiders[3].visible = true;
+          this.visibleSpiders++;
+          this.successShortSound.play();
+        } else if (this.spiders[3].visible && !this.spiders[5].visible) {
+          this.spiders[5].visible = true;
+          this.visibleSpiders++;
+          this.successShortSound.play();
+        } else if (!this.spiders[3].visible && this.spiders[5].visible) {
+          this.spiders[3].visible = true;
+          this.visibleSpiders++;
+          this.successShortSound.play();
+        } else if (this.spiders[3].visible && this.spiders[5].visible) {
+          this.visibleSpiders = this.visibleSpiders;
+          this.failureShortSound.play();
         }
-      case 1:
-        if (this.spider4.visible === true) {
-          this.spider4.setVisibleSpider();
-        } else {
-          this.spider6.setVisibleSpider();
+      } else {
+        this.failureShortSound.play();
+      }
+      console.log(this.visibleSpiders);
+      if (this.visibleSpiders === 7) {
+        this.wonSound.play();
+        setTimeout(() => {
+          window.location.reload();
+        }, 3500);
+      }
+
+      // CIRCLE 1
+    } else if (mouseX > 500 && mouseX < 590 && mouseY < 200 && mouseY > 100) {
+      if (!this.spiders[1].visible) {
+        if (!this.spiders[4].visible && !this.spiders[6].visible) {
+          this.spiders[4].visible = true;
+          this.visibleSpiders++;
+          this.successShortSound.play();
+        } else if (this.spiders[4].visible && !this.spiders[6].visible) {
+          this.spiders[6].visible = true;
+          this.visibleSpiders++;
+          this.successShortSound.play();
+        } else if (!this.spiders[4].visible && this.spiders[6].visible) {
+          this.spiders[4].visible = true;
+          this.visibleSpiders++;
+          this.successShortSound.play();
+        } else if (this.spiders[4].visible && this.spiders[6].visible) {
+          this.visibleSpiders = this.visibleSpiders;
+          this.failureShortSound.play();
         }
-      case 2:
-        if (this.spider5.visible === true) {
-          this.spider5.setVisibleSpider();
-        } else {
-          this.spider7.setVisibleSpider();
+      } else {
+        this.failureShortSound.play();
+      }
+      console.log(this.visibleSpiders);
+      if (this.visibleSpiders === 7) {
+        this.wonSound.play();
+        setTimeout(() => {
+          window.location.reload();
+        }, 3500);
+      }
+
+      // CIRCLE 2
+    } else if (mouseX > 565 && mouseX < 685 && mouseY < 400 && mouseY > 300) {
+      if (!this.spiders[2].visible) {
+        if (!this.spiders[5].visible && !this.spiders[7].visible) {
+          this.spiders[5].visible = true;
+          this.visibleSpiders++;
+          this.successShortSound.play();
+        } else if (this.spiders[5].visible && !this.spiders[7].visible) {
+          this.spiders[7].visible = true;
+          this.visibleSpiders++;
+          this.successShortSound.play();
+        } else if (!this.spiders[5].visible && this.spiders[7].visible) {
+          this.spiders[5].visible = true;
+          this.visibleSpiders++;
+          this.successShortSound.play();
+        } else if (this.spiders[5].visible && this.spiders[7].visible) {
+          this.visibleSpiders = this.visibleSpiders;
+          this.failureShortSound.play();
         }
-      case 3:
-        if (this.spider0.visible === true) {
-          this.spider0.setVisibleSpider();
-        } else {
-          this.spider6.setVisibleSpider();
+      } else {
+        this.failureShortSound.play();
+      }
+      console.log(this.visibleSpiders);
+      if (this.visibleSpiders === 7) {
+        this.wonSound.play();
+        setTimeout(() => {
+          window.location.reload();
+        }, 3500);
+      }
+
+      // CIRCLE 3
+    } else if (mouseX > 500 && mouseX < 600 && mouseY < 600 && mouseY > 500) {
+      if (!this.spiders[3].visible) {
+        if (!this.spiders[6].visible && !this.spiders[0].visible) {
+          this.spiders[6].visible = true;
+          this.visibleSpiders++;
+          this.successShortSound.play();
+        } else if (this.spiders[6].visible && !this.spiders[0].visible) {
+          this.spiders[0].visible = true;
+          this.visibleSpiders++;
+          this.successShortSound.play();
+        } else if (!this.spiders[6].visible && this.spiders[0].visible) {
+          this.spiders[6].visible = true;
+          this.visibleSpiders++;
+          this.successShortSound.play();
+        } else if (this.spiders[6].visible && this.spiders[6].visible) {
+          this.visibleSpiders = this.visibleSpiders;
+          this.failureShortSound.play();
         }
-      case 4:
-        if (this.spider1.visible === true) {
-          this.spider1.setVisibleSpider();
-        } else {
-          this.spider7.setVisibleSpider();
+      } else {
+        this.failureShortSound.play();
+      }
+      console.log(this.visibleSpiders);
+      if (this.visibleSpiders === 7) {
+        this.wonSound.play();
+        setTimeout(() => {
+          window.location.reload();
+        }, 3500);
+      }
+
+      // CIRCLE 4
+    } else if (mouseX > 300 && mouseX < 400 && mouseY < 685 && mouseY > 585) {
+      if (!this.spiders[4].visible) {
+        if (!this.spiders[7].visible && !this.spiders[1].visible) {
+          this.spiders[7].visible = true;
+          this.visibleSpiders++;
+          this.successShortSound.play();
+        } else if (this.spiders[7].visible && !this.spiders[1].visible) {
+          this.spiders[1].visible = true;
+          this.visibleSpiders++;
+          this.successShortSound.play();
+        } else if (!this.spiders[7].visible && this.spiders[1].visible) {
+          this.spiders[7].visible = true;
+          this.visibleSpiders++;
+          this.successShortSound.play();
+        } else if (this.spiders[7].visible && this.spiders[1].visible) {
+          this.visibleSpiders = this.visibleSpiders;
+          this.failureShortSound.play();
         }
-      case 5:
-        if (this.spider0.visible === true) {
-          this.spider0.setVisibleSpider();
-        } else {
-          this.spider2.setVisibleSpider();
+      } else {
+        this.failureShortSound.play();
+      }
+      console.log(this.visibleSpiders);
+      if (this.visibleSpiders === 7) {
+        this.wonSound.play();
+        setTimeout(() => {
+          window.location.reload();
+        }, 3500);
+      }
+
+      // CIRCLE 5
+    } else if (mouseX > 100 && mouseX < 200 && mouseY < 600 && mouseY > 500) {
+      if (!this.spiders[5].visible) {
+        if (!this.spiders[2].visible && !this.spiders[0].visible) {
+          this.spiders[0].visible = true;
+          this.visibleSpiders++;
+          this.successShortSound.play();
+        } else if (this.spiders[0].visible && !this.spiders[2].visible) {
+          this.spiders[2].visible = true;
+          this.visibleSpiders++;
+          this.successShortSound.play();
+        } else if (!this.spiders[0].visible && this.spiders[2].visible) {
+          this.spiders[0].visible = true;
+          this.visibleSpiders++;
+          this.successShortSound.play();
+        } else if (this.spiders[0].visible && this.spiders[2].visible) {
+          this.visibleSpiders = this.visibleSpiders;
+          this.failureShortSound.play();
         }
-      case 6:
-        if (this.spider1.visible === true) {
-          this.spider1.setVisibleSpider();
-        } else {
-          this.spider3.setVisibleSpider();
+      } else {
+        this.failureShortSound.play();
+      }
+      console.log(this.visibleSpiders);
+      if (this.visibleSpiders === 7) {
+        this.wonSound.play();
+        setTimeout(() => {
+          window.location.reload();
+        }, 3500);
+      }
+
+      // CIRCLE 6
+    } else if (mouseX > 20 && mouseX < 120 && mouseY < 400 && mouseY > 300) {
+      if (!this.spiders[6].visible) {
+        if (!this.spiders[1].visible && !this.spiders[3].visible) {
+          this.spiders[1].visible = true;
+          this.visibleSpiders++;
+          this.successShortSound.play();
+        } else if (this.spiders[1].visible && !this.spiders[3].visible) {
+          this.spiders[3].visible = true;
+          this.visibleSpiders++;
+          this.successShortSound.play();
+        } else if (!this.spiders[1].visible && this.spiders[3].visible) {
+          this.spiders[1].visible = true;
+          this.visibleSpiders++;
+          this.successShortSound.play();
+        } else if (this.spiders[1].visible && this.spiders[3].visible) {
+          this.visibleSpiders = this.visibleSpiders;
+          this.failureShortSound.play();
         }
-      case 7:
-        if (this.spider2.visible === true) {
-          this.spider2.setVisibleSpider();
-        } else {
-          this.spider4.setVisibleSpider();
+      } else {
+        this.failureShortSound.play();
+      }
+      console.log(this.visibleSpiders);
+      if (this.visibleSpiders === 7) {
+        this.wonSound.play();
+        setTimeout(() => {
+          window.location.reload();
+        }, 3500);
+      }
+
+      // CIRCLE 7
+    } else if (mouseX > 100 && mouseX < 200 && mouseY < 200 && mouseY > 100) {
+      if (!this.spiders[7].visible) {
+        if (!this.spiders[2].visible && !this.spiders[4].visible) {
+          this.spiders[2].visible = true;
+          this.visibleSpiders++;
+          this.successShortSound.play();
+        } else if (this.spiders[2].visible && !this.spiders[4].visible) {
+          this.spiders[4].visible = true;
+          this.visibleSpiders++;
+          this.successShortSound.play();
+        } else if (!this.spiders[2].visible && this.spiders[4].visible) {
+          this.spiders[2].visible = true;
+          this.visibleSpiders++;
+          this.successShortSound.play();
+        } else if (this.spiders[2].visible && this.spiders[4].visible) {
+          this.visibleSpiders = this.visibleSpiders;
+          this.failureShortSound.play();
         }
+      } else {
+        this.failureShortSound.play();
+      }
+
+      console.log(this.visibleSpiders);
+      if (this.visibleSpiders === 7) {
+        this.wonSound.play();
+        setTimeout(() => {
+          window.location.reload();
+        }, 3500);
+      }
+
+      // RESTART
+    } else if (mouseX > 570 && mouseX < 790 && mouseY < 70 && mouseY > 0) {
+      this.lostSound.play();
+      this.lostSound.playbackRate = 1.5;
+      setTimeout(() => {
+        window.location.reload();
+      }, 3500);
     }
   }
 }
