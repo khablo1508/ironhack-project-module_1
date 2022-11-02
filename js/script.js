@@ -18,12 +18,12 @@ gameStartButton.addEventListener('click', () => {
   popup.style.display = 'none';
   canvas.style.display = 'block';
 });
-restartButton.addEventListener('click', () => {
-  popup.style.display = 'none';
-  canvas.style.display = 'block';
-  winner.style.display = 'none';
-});
+// restartButton.addEventListener('click', () => {
+//   popup.style.display = 'none';
+//   canvas.style.display = 'block';
+//   // winner.style.display = 'none';
+// });
 
-if (canvas.style.display === 'none') {
-  winner.style.display = 'flex';
-}
+// if (canvas.style.display === 'none') {
+//   winner.style.display = 'flex';
+// }

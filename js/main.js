@@ -16,17 +16,14 @@ function draw() {
   game.drawTinyCircles();
   game.drawStar();
   game.setVisibleSpider();
-  // game.setVisibleSpiderSmall();
 
   if (visibleSpiders > 3) {
     game.drawButton();
-    // } else if (visibleSpiders === 7) {
-    //   game.drawPopup();
   }
 }
 
 function mouseClicked() {
-  // console.log(mouseX, mouseY);
+  console.log(mouseX, mouseY);
   // CIRCLE 0
   if (mouseX > 315 && mouseX < 385 && mouseY < 90 && mouseY > 40) {
     if (!game.spider0.visible) {
@@ -47,7 +44,6 @@ function mouseClicked() {
         game.failureShortSound.play();
       }
       game.setVisibleSpider(0);
-      game.setVisibleSpiderSmall(0);
     } else {
       game.failureShortSound.play();
     }
@@ -285,4 +281,14 @@ function mouseClicked() {
       window.location.reload();
     }, 3500);
   }
+  console.log(
+    game.spider0.visible,
+    game.spider1.visible,
+    game.spider2.visible,
+    game.spider3.visible,
+    game.spider4.visible,
+    game.spider5.visible,
+    game.spider6.visible,
+    game.spider7.visible
+  );
 }
