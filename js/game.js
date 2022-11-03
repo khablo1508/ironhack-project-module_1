@@ -19,14 +19,9 @@ class Game {
   }
   preload() {
     this.font = loadFont('../assets/ShadowsIntoLight.ttf');
-    this.spiders[0].image = loadImage('../assets/spider-pos0.png');
-    this.spiders[1].image = loadImage('../assets/spider-pos1.png');
-    this.spiders[2].image = loadImage('../assets/spider-pos2.png');
-    this.spiders[3].image = loadImage('../assets/spider-pos3.png');
-    this.spiders[4].image = loadImage('../assets/spider-pos4.png');
-    this.spiders[5].image = loadImage('../assets/spider-pos5.png');
-    this.spiders[6].image = loadImage('../assets/spider-pos6.png');
-    this.spiders[7].image = loadImage('../assets/spider-pos7.png');
+    this.spiders.forEach((spider, index) => {
+      spider.image = loadImage(`../assets/spider-pos${index}.png`);
+    });
   }
 
   drawButton() {
