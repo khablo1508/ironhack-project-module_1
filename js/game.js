@@ -1,14 +1,14 @@
 class Game {
   constructor() {
     this.spiders = [
-      new Spider(WIDTH * 0.39, HEIGHT * -0.007),
-      new Spider(WIDTH * 0.67, HEIGHT * 0.107),
-      new Spider(WIDTH * 0.79, HEIGHT * 0.39),
-      new Spider(WIDTH * 0.67, HEIGHT * 0.68),
-      new Spider(WIDTH * 0.39, HEIGHT * 0.79),
-      new Spider(WIDTH * 0.114, HEIGHT * 0.68),
-      new Spider(WIDTH * -0.007, HEIGHT * 0.39),
-      new Spider(WIDTH * 0.114, HEIGHT * 0.107),
+      new Spider(275, -5),
+      new Spider(470, 75),
+      new Spider(555, 275),
+      new Spider(470, 475),
+      new Spider(275, 555),
+      new Spider(80, 475),
+      new Spider(-5, 275),
+      new Spider(80, 75),
     ];
     this.visibleSpiders = 0;
     this.failureShortSound = new Audio('../assets/failure-short.mp3');
@@ -27,11 +27,11 @@ class Game {
   drawButton() {
     // restart button
     stroke('#fff4a3');
-    rect(WIDTH * 0.83, HEIGHT * 0.03, WIDTH * 0.14, WIDTH * 0.071, 20);
+    rect(580, 20, 100, 50, 20);
 
     // text
-    text('Restart?', WIDTH * 0.86, HEIGHT * 0.071);
     fill('#174366');
+    text('Restart?', 605, 50);
     textSize(16);
     textFont('ShadowsIntoLight');
   }
@@ -41,14 +41,14 @@ class Game {
     stroke('#000');
     strokeWeight(6);
     fill('#fff4a3');
-    circle(WIDTH / 2, HEIGHT / 2, WIDTH * 0.857);
+    circle(350, 350, 600);
   }
   drawSmallerFieldCircle() {
     // smaller light blue circle inside of the yellow circle
     stroke('#000');
     strokeWeight(4);
     fill('#0171a1');
-    circle(WIDTH / 2, HEIGHT / 2, WIDTH * 0.743);
+    circle(350, 350, 520);
   }
 
   drawButtonCircles() {
@@ -56,67 +56,62 @@ class Game {
     fill('#ff1d00');
     //multiple middle circles
     // 0 & 4
-    circle(WIDTH / 2, HEIGHT * 0.1, WIDTH * 0.045);
-    circle(WIDTH / 2, HEIGHT * 0.9, WIDTH * 0.045);
+    circle(350, 70, 32);
+    circle(350, 630, 32);
 
     // 7 & 1
-    circle(WIDTH * 0.22, HEIGHT * 0.215, WIDTH * 0.045);
-    circle(WIDTH * 0.78, HEIGHT * 0.215, WIDTH * 0.045);
+    circle(155, 150, 32);
+    circle(545, 150, 32);
 
     // 6 & 2
-    circle(WIDTH * 0.1, HEIGHT / 2, WIDTH * 0.045);
-    circle(WIDTH * 0.9, HEIGHT / 2, WIDTH * 0.045);
+    circle(70, 350, 32);
+    circle(630, 350, 32);
 
     // 5 & 3//
-    circle(WIDTH * 0.22, HEIGHT * 0.785, WIDTH * 0.045);
-    circle(WIDTH * 0.78, HEIGHT * 0.785, WIDTH * 0.045);
+    circle(155, 550, 32);
+    circle(545, 550, 32);
   }
 
   drawTinyCircles() {
     noStroke();
     fill('#ff1d00');
 
-    circle(WIDTH * 0.35, HEIGHT * 0.13, WIDTH * 0.023);
-    circle(WIDTH * 0.65, HEIGHT * 0.13, WIDTH * 0.023);
+    circle(245, 92, 16);
+    circle(455, 92, 16);
 
-    circle(WIDTH * 0.35, HEIGHT * 0.87, WIDTH * 0.023);
-    circle(WIDTH * 0.65, HEIGHT * 0.87, WIDTH * 0.023);
+    circle(245, 608, 16);
+    circle(455, 608, 16);
 
-    circle(WIDTH * 0.13, HEIGHT * 0.35, WIDTH * 0.023);
-    circle(WIDTH * 0.87, HEIGHT * 0.35, WIDTH * 0.023);
+    circle(92, 245, 16);
+    circle(608, 245, 16);
 
-    circle(WIDTH * 0.13, HEIGHT * 0.65, WIDTH * 0.023);
-    circle(WIDTH * 0.87, HEIGHT * 0.65, WIDTH * 0.023);
+    circle(92, 455, 16);
+    circle(608, 455, 16);
   }
 
   drawStar() {
     stroke('#fff');
     strokeWeight(6);
     // 1 to 6
-    line(WIDTH / 2, HEIGHT * 0.135, WIDTH * 0.236, HEIGHT * 0.75);
+    line(350, 95, 165, 530);
     // 1 to 4
-    line(WIDTH / 2, HEIGHT * 0.135, WIDTH * 0.76, HEIGHT * 0.75);
+    line(350, 95, 533, 530);
     // 4 to 7
-    line(WIDTH * 0.76, HEIGHT * 0.75, WIDTH * 0.135, HEIGHT / 2);
+    line(533, 530, 94, 350);
     // 7 to 2
-    line(WIDTH * 0.135, HEIGHT / 2, WIDTH * 0.75, HEIGHT * 0.236);
+    line(94, 350, 528, 165);
     // 2 to 5
-    line(WIDTH * 0.75, HEIGHT * 0.236, WIDTH / 2, HEIGHT * 0.86);
+    line(528, 165, 350, 605);
     // 5 to 8
-    line(WIDTH / 2, HEIGHT * 0.86, WIDTH * 0.236, HEIGHT * 0.243);
+    line(350, 605, 167, 170);
     // 8 to 3
-    line(WIDTH * 0.236, HEIGHT * 0.243, WIDTH * 0.86, HEIGHT / 2);
+    line(167, 170, 606, 350);
     // 3 to 6
-    line(WIDTH * 0.86, HEIGHT / 2, WIDTH * 0.236, HEIGHT * 0.75);
+    line(606, 350, 165, 530);
   }
 
   checkClick() {
-    if (
-      mouseX > WIDTH * 0.43 &&
-      mouseX < WIDTH * 0.57 &&
-      mouseY < HEIGHT * 0.157 &&
-      mouseY > HEIGHT * 0.028
-    ) {
+    if (mouseX > 300 && mouseX < 400 && mouseY < 110 && mouseY > 20) {
       if (!this.spiders[0].visible) {
         if (!this.spiders[3].visible && !this.spiders[5].visible) {
           this.spiders[3].visible = true;
@@ -137,7 +132,7 @@ class Game {
       } else {
         this.failureShortSound.play();
       }
-      // check if won
+      console.log(this.visibleSpiders);
       if (this.visibleSpiders === 7) {
         this.wonSound.play();
         setTimeout(() => {
@@ -146,12 +141,7 @@ class Game {
       }
 
       // CIRCLE 1
-    } else if (
-      mouseX > WIDTH * 0.715 &&
-      mouseX < WIDTH * 0.84 &&
-      mouseY < HEIGHT * 0.28 &&
-      mouseY > HEIGHT * 0.14
-    ) {
+    } else if (mouseX > 500 && mouseX < 590 && mouseY < 200 && mouseY > 100) {
       if (!this.spiders[1].visible) {
         if (!this.spiders[4].visible && !this.spiders[6].visible) {
           this.spiders[4].visible = true;
@@ -172,7 +162,7 @@ class Game {
       } else {
         this.failureShortSound.play();
       }
-      // check if won
+      console.log(this.visibleSpiders);
       if (this.visibleSpiders === 7) {
         this.wonSound.play();
         setTimeout(() => {
@@ -181,12 +171,7 @@ class Game {
       }
 
       // CIRCLE 2
-    } else if (
-      mouseX > WIDTH * 0.8 &&
-      mouseX < WIDTH * 0.97 &&
-      mouseY < HEIGHT * 0.57 &&
-      mouseY > HEIGHT * 0.43
-    ) {
+    } else if (mouseX > 565 && mouseX < 685 && mouseY < 400 && mouseY > 300) {
       if (!this.spiders[2].visible) {
         if (!this.spiders[5].visible && !this.spiders[7].visible) {
           this.spiders[5].visible = true;
@@ -207,7 +192,7 @@ class Game {
       } else {
         this.failureShortSound.play();
       }
-      // check if won
+      console.log(this.visibleSpiders);
       if (this.visibleSpiders === 7) {
         this.wonSound.play();
         setTimeout(() => {
@@ -216,12 +201,7 @@ class Game {
       }
 
       // CIRCLE 3
-    } else if (
-      mouseX > WIDTH * 0.71 &&
-      mouseX < WIDTH * 0.86 &&
-      mouseY < HEIGHT * 0.86 &&
-      mouseY > HEIGHT * 0.71
-    ) {
+    } else if (mouseX > 500 && mouseX < 600 && mouseY < 600 && mouseY > 500) {
       if (!this.spiders[3].visible) {
         if (!this.spiders[6].visible && !this.spiders[0].visible) {
           this.spiders[6].visible = true;
@@ -242,7 +222,7 @@ class Game {
       } else {
         this.failureShortSound.play();
       }
-      // check if won
+      console.log(this.visibleSpiders);
       if (this.visibleSpiders === 7) {
         this.wonSound.play();
         setTimeout(() => {
@@ -251,12 +231,7 @@ class Game {
       }
 
       // CIRCLE 4
-    } else if (
-      mouseX > WIDTH * 0.43 &&
-      mouseX < WIDTH * 0.57 &&
-      mouseY < HEIGHT * 0.98 &&
-      mouseY > HEIGHT * 0.83
-    ) {
+    } else if (mouseX > 300 && mouseX < 400 && mouseY < 685 && mouseY > 585) {
       if (!this.spiders[4].visible) {
         if (!this.spiders[7].visible && !this.spiders[1].visible) {
           this.spiders[7].visible = true;
@@ -277,7 +252,7 @@ class Game {
       } else {
         this.failureShortSound.play();
       }
-      // check if won
+      console.log(this.visibleSpiders);
       if (this.visibleSpiders === 7) {
         this.wonSound.play();
         setTimeout(() => {
@@ -286,12 +261,7 @@ class Game {
       }
 
       // CIRCLE 5
-    } else if (
-      mouseX > WIDTH * 0.14 &&
-      mouseX < WIDTH * 0.28 &&
-      mouseY < HEIGHT * 0.86 &&
-      mouseY > HEIGHT * 0.71
-    ) {
+    } else if (mouseX > 100 && mouseX < 200 && mouseY < 600 && mouseY > 500) {
       if (!this.spiders[5].visible) {
         if (!this.spiders[2].visible && !this.spiders[0].visible) {
           this.spiders[0].visible = true;
@@ -312,7 +282,7 @@ class Game {
       } else {
         this.failureShortSound.play();
       }
-      // check if won
+      console.log(this.visibleSpiders);
       if (this.visibleSpiders === 7) {
         this.wonSound.play();
         setTimeout(() => {
@@ -321,12 +291,7 @@ class Game {
       }
 
       // CIRCLE 6
-    } else if (
-      mouseX > WIDTH * 0.028 &&
-      mouseX < WIDTH * 0.17 &&
-      mouseY < HEIGHT * 0.57 &&
-      mouseY > HEIGHT * 0.43
-    ) {
+    } else if (mouseX > 20 && mouseX < 120 && mouseY < 400 && mouseY > 300) {
       if (!this.spiders[6].visible) {
         if (!this.spiders[1].visible && !this.spiders[3].visible) {
           this.spiders[1].visible = true;
@@ -347,7 +312,7 @@ class Game {
       } else {
         this.failureShortSound.play();
       }
-      // check if won
+      console.log(this.visibleSpiders);
       if (this.visibleSpiders === 7) {
         this.wonSound.play();
         setTimeout(() => {
@@ -356,12 +321,7 @@ class Game {
       }
 
       // CIRCLE 7
-    } else if (
-      mouseX > WIDTH * 0.14 &&
-      mouseX < WIDTH * 0.28 &&
-      mouseY < HEIGHT * 0.28 &&
-      mouseY > HEIGHT * 0.14
-    ) {
+    } else if (mouseX > 100 && mouseX < 200 && mouseY < 200 && mouseY > 100) {
       if (!this.spiders[7].visible) {
         if (!this.spiders[2].visible && !this.spiders[4].visible) {
           this.spiders[2].visible = true;
@@ -382,7 +342,8 @@ class Game {
       } else {
         this.failureShortSound.play();
       }
-      // check if won
+
+      console.log(this.visibleSpiders);
       if (this.visibleSpiders === 7) {
         this.wonSound.play();
         setTimeout(() => {
@@ -391,12 +352,7 @@ class Game {
       }
 
       // RESTART
-    } else if (
-      mouseX > WIDTH * 0.814 &&
-      mouseX < WIDTH &&
-      mouseY < HEIGHT * 0.1 &&
-      mouseY > 0
-    ) {
+    } else if (mouseX > 570 && mouseX < 790 && mouseY < 70 && mouseY > 0) {
       this.lostSound.play();
       this.lostSound.playbackRate = 1.5;
       setTimeout(() => {
@@ -416,7 +372,7 @@ class Spider {
 
   setVisibleSpider() {
     if (this.visible) {
-      image(this.image, this.x, this.y, WIDTH * 0.215, HEIGHT * 0.215);
+      image(this.image, this.x, this.y, 150, 150);
     }
   }
 }
