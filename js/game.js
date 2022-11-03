@@ -110,13 +110,6 @@ class Game {
     line(606, 350, 165, 530);
   }
 
-  // drawPopup() {
-  //   stroke('#ff1d00');
-  //   strokeWeight(10);
-  //   fill('#fff4a3');
-  //   circle(350, 350, 680);
-  // }
-
   checkClick() {
     if (mouseX > 300 && mouseX < 400 && mouseY < 110 && mouseY > 20) {
       if (!this.spiders[0].visible) {
